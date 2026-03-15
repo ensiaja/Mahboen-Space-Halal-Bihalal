@@ -1,0 +1,32 @@
+function openInvite(){
+
+document.getElementById("cover").style.display="none"
+document.getElementById("main").style.display="block"
+
+}
+
+const urlParams = new URLSearchParams(window.location.search)
+const guest = urlParams.get("to")
+
+if(guest){
+
+document.getElementById("guest").innerText = guest
+
+}
+
+const targetDate = new Date("March 25, 2026 15:00:00").getTime()
+
+setInterval(function(){
+
+const now = new Date().getTime()
+const distance = targetDate - now
+
+const days = Math.floor(distance/(1000*60*60*24))
+const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60))
+const minutes = Math.floor((distance%(1000*60*60))/(1000*60))
+const seconds = Math.floor((distance%(1000*60))/1000)
+
+document.getElementById("timer").innerHTML =
+days+" Hari "+hours+" Jam "+minutes+" Menit "+seconds+" Detik"
+
+},1000)
